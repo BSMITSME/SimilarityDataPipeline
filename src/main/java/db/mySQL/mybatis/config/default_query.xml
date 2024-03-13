@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="default_query">
+
+    <select id="count_parent" resultType="int">
+        SELECT count(*) FROM similarity_p;
+    </select>
+    <select id="count_child" resultType="int">
+        SELECT count(*) FROM similarity_c;
+    </select>
+
+    <select id = "getParent" resultType="map">
+        select * from similarity_p;
+    </select>
+    <select id = "getChild" resultType="map">
+        select * from similarity_c;
+    </select>
+
+<!--    <insert id="insert_data" parameterType="db.mySQL.dto.MySQLData">-->
+<!--        INSERT INTO lucy (sitename, domain, docid, date, url, title) VALUES (#{wc_sitename}, #{au_domain}, #{kw_docid}, #{in_date}, #{au_url}, #{an_title});-->
+<!--    </insert>-->
+
+    <insert id = "insert_p" parameterType="db.mySQL.dto.MySQLData">
+        INSERT IGNORE INTO similarity_p VALUES
+        <foreach collection="list" item ="db.mySQL.dto.MySQLData" separator=",">
+            (#{db.mySQL.dto.MySQLData.id}, #{db.mySQL.dto.MySQLData.keyword}, #{db.mySQL.dto.MySQLData.pid})
+        </foreach>
+    </insert>
+
+    <insert id = "insert_c" parameterType="db.mySQL.dto.MySQLData">
+        INSERT IGNORE INTO similarity_c VALUES
+        <foreach collection="list" item ="db.mySQL.dto.MySQLData" separator=",">
+            (#{db.mySQL.dto.MySQLData.id}, #{db.mySQL.dto.MySQLData.keyword}, #{db.mySQL.dto.MySQLData.pid})
+        </foreach>
+    </insert>
+</mapper>
