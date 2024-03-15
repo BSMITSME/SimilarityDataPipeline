@@ -1,3 +1,6 @@
+### 초기 설정
+- elasticsearch
+- https://www.notion.so/Elasticsearch-fe0c18529ab24fb7a51338556f0a6eea?pvs=4
 # SimilarityDataPipeline
 <img width="693" alt="image" src="https://github.com/BSMITSME/SimilarityDataPipeline/assets/77155103/25febb96-442f-4d2d-a896-44091aeb1757">
 
